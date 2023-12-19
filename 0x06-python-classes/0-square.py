@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+# 0-square.py by Vivian Okaforcha
+"""This defines a square"""
+
+
 class Square:
-    """This defines a class square.
-
-
-    Does nothing for the class.
-    """
+    """Does nothing for the class."""
     pass
