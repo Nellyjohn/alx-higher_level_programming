@@ -1,20 +1,70 @@
->>> add_integer = __import__('0-add_integer').add_integer
->>> add_integer(2, 3)
-5
->>> add_integer(2.0, 3.0)
-5.0
->>> add_integer(2, 3.0)
-5
->>> add_integer(2)
-100
->>> add_integer("hello", 3)
-Traceback (most recent call last):
-TypeError: a must be an integer
+Test cases for 0-add_integer module
+===================================
 
->>> add_integer(2, "3")
-Traceback (most recent call):
-TypeError: b must be an integer
+This function takes two integeres of floats and returns their sum
 
->>> add_integer(None)
-Traceback (most recent call last):
-TypeError: a must be an integer
+Usage
+=====
+
+Importing function from the module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Addition of two positive integers
+    >>> add_integer(2, 3)
+    5
+
+Addition of two positive float numbers
+    >>> add_integer(2.0, 3.0)
+    5
+
+Addition of one positive integer and one positive float
+    >>> add_integer(2, 3.0)
+    5
+
+Addition of one negative integer and one positive float
+    >>> add_integer(-2, 3)
+    1
+
+Addition of one negative float and one positive float
+    >>> add_integer(-2.5 , 3.7)
+    1
+
+Addition of one negative float and one positive integer
+    >>> add_integer(-2.5, 3)
+    1
+
+Case Overflow:
+    >>> add_integer(float('inf'), 3)
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+case NaN:
+    >>> add_integer(float('nan'), 5)
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+Addition of two integers where the second is the default value
+    >>> add_integer(2)
+    100
+
+Addition of a string and an integer
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+    >>> add_integer(2, "3")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Passing no argument to the function
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
