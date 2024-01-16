@@ -4,6 +4,7 @@ import json
 from os.path import isfile
 import csv
 import turtle
+import os
 
 
 class Base:
@@ -39,15 +40,13 @@ class Base:
         This is a class method that writes the JSON string
         representation of list_objs to a file
         """
-        if list_objs is None:
-            list_objs = []
-            to_json_string = json.dumps(list_objs)
-            return (to_json_string)
-        else:
-            list_objs = [obj.to_dictionary() for obj in list_objs]
-        filename = "{}.json".format(cls.__name__)
-        with open(filename, 'w') as f:
-            f.write(Base.to_json_string(list_objs))
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
@@ -78,6 +77,7 @@ class Base:
         """
         This is a class method that returns a list of instances"""
         filename = cls.__name__ + ".json"
+        list_instances = []
         if os.path.exists(filename):
             with open(filename, 'r') as file:
                 contents = file.read()
