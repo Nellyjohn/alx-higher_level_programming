@@ -3,6 +3,7 @@
 import json
 from os.path import isfile
 import csv
+import turtle
 
 
 class Base:
@@ -46,7 +47,7 @@ class Base:
             list_objs = [obj.to_dictionary() for obj in list_objs]
         filename = "{}.json".format(cls.__name__)
         with open(filename, 'w') as f:
-                f.write(Base.to_json_string(list_objs))
+            f.write(Base.to_json_string(list_objs))
 
     @staticmethod
     def from_json_string(json_string):
@@ -114,7 +115,50 @@ class Base:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
+                        for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using the turtle module.
+
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.                      list_squares (list): A list of Square objects to draw.
+        """
+        try:
+            my_turtle = turtle.Turtle()
+            my_turtle.screen.bgcolor("#b7312c")
+            my_turtle.pensize(3)
+            my_turtle.shape("turtle")
+
+            my_turtle.color("ffffff")
+            for rect in list_rectangles:
+                my_turtle.showturtle()
+                my_turtle.up()
+                my_turtle.goto(rect.x, rect.y)
+                my_turtle.down()
+                for i in range(2):
+                    my_turtle.forward(rect.width)
+                    my_turtle.left(90)
+                    my_turtle.forward(rect.height)
+                    my_turtle.left(90)
+                my_turtle.hideturtle()
+
+            my_turtle.color("#b5e3d8")
+            for sq in list_squares:
+                my_turtle.showturtle()
+                my_turtle.up()
+                my_turtle.goto(sq.x, sq.y)
+                my_turtle.down()
+                for i in range(4):
+                    my_turtle.forward(sq.width)
+                    my_turtle.left(90)
+                    my_turtle.forward(sq.height)
+                    my_turtle.left(90)
+                my_turtle.hideturtle()
+
+            turtle.exitonclick()
+        except Exception:
+            print("Goodbye")
