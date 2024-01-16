@@ -28,6 +28,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        """Doc function"""
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -41,6 +42,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        """Doc function"""
         if type(value) != int:
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -54,6 +56,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        """Doc function"""
         if type(value) != int:
             raise TypeError("x must be an integer")
         if value < 0:
@@ -67,6 +70,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
+        """Doc function"""
         if type(value) != int:
             raise TypeError("y must be an integer")
         if value < 0:
@@ -95,6 +99,16 @@ class Rectangle(Base):
                 self.x, self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
+        """Update the Rectangle.
+        Args:
+        *args (ints): New attribute values.
+        - 1st argument represents id attribute
+        - 2nd argument represents width attribute
+        - 3rd argument represent height attribute
+        - 4th argument represents x attribute
+        - 5th argument represents y attribute
+        **kwargs (dict): New key/value pairs of attributes.
+        """
         if args:
             self.id = args[0] if len(args) > 0 else self.id
             self.width = args[1] if len(args) > 1 else self.width
