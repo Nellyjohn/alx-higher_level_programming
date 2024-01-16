@@ -50,7 +50,7 @@ class Square(Rectangle):
                     if v is None:
                         self.__init__(self.size, self.x, self.y)
                     else:
-                            self.id = v
+                        self.id = v
                 elif k == "size":
                     self.size = v
                 elif k == "x":
