@@ -24,7 +24,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """
-        This is a static method that returns the JSON string representation 
+        This is a static method that returns the JSON string representation
         of list_dictionaries which is a list of dictionaries
         """
         if list_dictionaries is None or not list_dictionaries:
@@ -36,7 +36,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        This is a class method that writes the JSON string 
+        This is a class method that writes the JSON string
         representation of list_objs to a file
         """
         if list_objs is None:
@@ -115,7 +115,7 @@ class Base:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
-                        for d in list_dicts]
+                              for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
@@ -125,7 +125,8 @@ class Base:
         """Draw Rectangles and Squares using the turtle module.
 
         Args:
-            list_rectangles (list): A list of Rectangle objects to draw.                      list_squares (list): A list of Square objects to draw.
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
         """
         try:
             my_turtle = turtle.Turtle()

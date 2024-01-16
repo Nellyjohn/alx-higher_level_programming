@@ -55,7 +55,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         if not isinstance(value, int):
-             raise TypeError("x must be an integer")
+            raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
@@ -91,7 +91,8 @@ class Rectangle(Base):
 
     def __str__(self):
         """Represents objects as a string"""
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height))
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                self.x, self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
         if args:
@@ -112,4 +113,5 @@ class Rectangle(Base):
         Function Doc
         """
 
-        return {'id': self.id, 'x': self.x, 'width': self.width, 'height': self.height, 'y': self.y}
+        return {'id': self.id, 'x': self.x, 'width': self.width,
+                'height': self.height, 'y': self.y}
