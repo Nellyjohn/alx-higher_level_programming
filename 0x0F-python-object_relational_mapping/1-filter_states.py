@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 """This module  lists all states with a name starting with N (upper N)
 from the database hbtn_0e_0_usa"""
+
 import MySQLdb
 from sys import argv
 import sys
 
+"""
+Access to the database and get the states
+from the database.
+"""
 
 if __name__ == "__main__":
     conn = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
